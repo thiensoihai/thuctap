@@ -1,0 +1,2 @@
+[15-Dec-2015 16:23:19 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/ilashmax72/public_html/dev/admin/controller/extension/registrations.php on line 575
+[15-Dec-2015 16:23:19 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/ilashmax72/public_html/dev/admin/controller/extension/registrations.php on line 575

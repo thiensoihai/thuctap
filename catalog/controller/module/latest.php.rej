@@ -1,0 +1,6 @@
+diff a/source/catalog/controller/module/latest.php b/source/catalog/controller/module/latest.php	(rejected hunks)
+@@ -80,3 +80,3 @@
+ 					'special'     => $special,
+-					'discount'     => $discount,
++					'discount'    => $discount,
+ 					'tax'         => $tax,

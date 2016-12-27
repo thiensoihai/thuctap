@@ -1,0 +1,143 @@
+# 1.To use URL Alias you need to be running apache with mod_rewrite enabled. 
+
+# 2. In your opencart directory rename htaccess.txt to .htaccess.
+
+# For any support issues please visit: http://www.opencart.com
+
+Options +FollowSymlinks
+
+# Prevent Directoy listing 
+Options -Indexes
+<IfModule mod_headers.c>
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+</IfModule>
+
+RewriteEngine On
+Options -Indexes
+Options +FollowSymLinks
+
+# BEGIN Compress text files
+<ifModule mod_deflate.c>
+  <filesMatch "\.(css|js|x?html?|php)$">
+    SetOutputFilter DEFLATE
+  </filesMatch>
+</ifModule>
+# END Compress text files
+ 
+# BEGIN Expire headers
+<ifModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 seconds"
+  ExpiresByType image/x-icon "access plus 2592000 seconds"
+  ExpiresByType image/jpeg "access plus 2592000 seconds"
+  ExpiresByType image/png "access plus 2592000 seconds"
+  ExpiresByType image/gif "access plus 2592000 seconds"
+  ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+  ExpiresByType text/css "access plus 604800 seconds"
+  ExpiresByType text/javascript "access plus 216000 seconds"
+  ExpiresByType application/javascript "access plus 216000 seconds"
+  ExpiresByType application/x-javascript "access plus 216000 seconds"
+  ExpiresByType text/html "access plus 600 seconds"
+  ExpiresByType application/xhtml+xml "access plus 600 seconds"
+</ifModule>
+# END Expire headers
+ 
+# BEGIN Cache-Control Headers
+<ifModule mod_headers.c>
+  <filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </filesMatch>
+  <filesMatch "\.(css)$">
+    Header set Cache-Control "max-age=604800, public"
+  </filesMatch>
+  <filesMatch "\.(js)$">
+    Header set Cache-Control "max-age=216000, private"
+  </filesMatch>
+  <filesMatch "\.(x?html?|php)$">
+    Header set Cache-Control "max-age=600, private, must-revalidate"
+  </filesMatch>
+</ifModule>
+# END Cache-Control Headers
+ 
+# BEGIN Turn ETags Off
+<ifModule mod_headers.c>
+  Header unset ETag
+</ifModule>
+FileETag None
+# END Turn ETags Off 
+ 
+# BEGIN Remove Last-Modified Header
+<ifModule mod_headers.c>
+  Header unset Last-Modified
+</ifModule>
+# END Remove Last-Modified Header
+
+# Prevent Direct Access to files
+<FilesMatch "(?i)((\.tpl|\.ini|\.log|(?<!robots)\.txt))">
+ Order deny,allow
+ Deny from all
+</FilesMatch>
+
+# SEO URL Settings
+RewriteEngine On
+# If your opencart installation does not run on the main web folder make sure you folder it does run in ie. / becomes /shop/ 
+
+RewriteBase /pizza.com/
+RewriteRule ^sitemap.xml$ index.php?route=feed/google_sitemap [L]
+RewriteRule ^googlebase.xml$ index.php?route=feed/google_base [L]
+RewriteRule ^system/download/(.*) /index.php?route=error/not_found [L]
+#NEW REWRITE RULES
+ReWriteRule  ^home/?$  index.php?route=common/home [L]
+RewriteRule  ^contact/?$  index.php?route=information/contact  [L]
+ReWriteRule  ^account/?$  index.php?route=account/account  [L]
+ReWriteRule  ^register/?$  index.php?route=account/register [L]
+ReWriteRule  ^login/?$  index.php?route=account/login  [L]
+ReWriteRule  ^logout/?$  index.php?route=account/logout  [L]
+ReWriteRule  ^cart/?$  index.php?route=checkout/cart  [L]
+ReWriteRule  ^checkout/?$  index.php?route=checkout/checkout  [L]
+ReWriteRule  ^brand/?$  index.php?route=product/manufacturer  [L]
+ReWriteRule  ^specials/?$  index.php?route=product/special  [L]
+ReWriteRule  ^vouchers/?$  index.php?route=account/voucher  [L]
+ReWriteRule  ^wishlist/?$  index.php?route=account/wishlist  [L]
+ReWriteRule  ^my-orders/?$  index.php?route=account/orders  [L]
+ReWriteRule  ^affiliate/?$  index.php?route=affiliate/account  [L]
+ReWriteRule  ^checkout-voucher/?$  index.php?route=checkout/voucher  [L]
+ReWriteRule  ^newsletter/?$  index.php?route=account/newsletter  [L]
+ReWriteRule  ^return/?$  index.php?route=account/return/add  [L]
+ReWriteRule  ^sitemap/?$  index.php?route=information/sitemap  [L]
+ReWriteRule  ^support/?$  index.php?route=account/logindata  [L]
+ReWriteRule  ^voucher/?$  index.php?route=account/voucher  [L]
+ReWriteRule  ^register-form/([a-zA-Z0-9\-]+)$  index.php?route=account/registerform&class_id=$1  [L]
+ReWriteRule  ^training-programs/?$  index.php?route=information/news  [L]
+ReWriteRule  ^video-ilashmax/?$  index.php?route=information/video  [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
+RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
+
+### Additional Settings that may need to be enabled for some servers 
+### Uncomment the commands by removing the # sign in front of it.
+### If you get an "Internal Server Error 500" after enabling any of the following settings, restore the # as this means your host doesn't allow that.
+
+# 1. If your cart only allows you to add one item at a time, it is possible register_globals is on. This may work to disable it:
+# php_flag register_globals off
+
+# 2. If your cart has magic quotes enabled, This may work to disable it:
+# php_flag magic_quotes_gpc Off
+
+# 3. Set max upload file size. Most hosts will limit this and not allow it to be overridden but you can try
+# php_value upload_max_filesize 999M
+
+# 4. set max post size. uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value post_max_size 999M
+
+# 5. set max time script can take. uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value max_execution_time 200
+
+# 6. set max time for input to be recieved. Uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value max_input_time 200
+
+# 7. disable open_basedir limitations
+# php_admin_value open_basedir none
