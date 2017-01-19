@@ -1,0 +1,106 @@
+2015-12-09 20:51:35 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 58
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 37
+LINE: 54
+LINE: 65
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 21
+LINE: 27
+----------------------------------------------------------------
+MOD: <font color="#0000"><b>Reviews Star</font>
+FILE: catalog/view/theme/default/template/module/bestseller.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 9
+CODE: <?php } ?>
+LINE: 20
+FILE: catalog/view/theme/ilashmax.com/template/module/bestseller.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 9
+CODE: <?php } ?>
+LINE: 20
+FILE: catalog/view/theme/default/template/module/featured.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 9
+CODE: <?php } ?>
+LINE: 20
+FILE: catalog/view/theme/ilashmax.com/template/module/featured.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 9
+CODE: <?php } ?>
+LINE: 20
+FILE: catalog/view/theme/default/template/module/latest.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 9
+CODE: <?php } ?>
+LINE: 20
+FILE: catalog/view/theme/ilashmax.com/template/module/latest.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 31
+CODE: <?php } ?>
+LINE: 30
+FILE: catalog/view/theme/default/template/module/special.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 9
+CODE: <?php } ?>
+LINE: 20
+FILE: catalog/view/theme/ilashmax.com/template/module/special.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 10
+CODE: <?php } ?>
+LINE: 21
+FILE: catalog/view/theme/default/template/product/category.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 102
+CODE: <?php } ?>
+LINE: 113
+FILE: catalog/view/theme/ilashmax.com/template/product/category.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 50
+CODE: <?php } ?>
+NOT FOUND!
+FILE: catalog/view/theme/default/template/product/special.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 64
+CODE: <?php } ?>
+LINE: 75
+FILE: catalog/view/theme/ilashmax.com/template/product/special.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 64
+CODE: <?php } ?>
+LINE: 75
+FILE: catalog/view/theme/default/template/product/manufacturer_info.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 64
+CODE: <?php } ?>
+LINE: 75
+FILE: catalog/view/theme/ilashmax.com/template/product/manufacturer_info.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 55
+CODE: <?php } ?>
+LINE: 69
+FILE: catalog/view/theme/default/template/product/search.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 128
+CODE: <?php } ?>
+LINE: 125
+FILE: catalog/view/theme/ilashmax.com/template/product/search.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 140
+CODE: <?php } ?>
+LINE: 137
+FILE: catalog/view/theme/default/template/product/product.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 361
+FILE: catalog/view/theme/ilashmax.com/template/product/product.tpl
+CODE: <?php if ($product['rating']) { ?>
+LINE: 82
+----------------------------------------------------------------
